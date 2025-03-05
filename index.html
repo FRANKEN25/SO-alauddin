@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Card & Popup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            width: 200px;
+            height: 270px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:active {
+            transform: scale(0.95) rotateZ(1.7deg);
+        }
+
+        .red { background: rgba(255, 0, 0, 0.8); }
+        .blue { background: rgba(0, 0, 255, 0.8); }
+        .yellow { background: rgba(255, 255, 0, 0.8); color: black; }
+        .green { background: rgba(0, 128, 0, 0.8); }
+
+        /* Popup */
+        #popupOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .popupBox {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: 0.3s;
+        }
+
+        .showPopup {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .showPopup .popupBox {
+            transform: scale(1) !important;
+        }
+
+        .popupBox button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popupBox button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>STOCK Erafone ALAUDDIN</h1>
+    <div class="cards-container">
+        <div class="card red" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1N44gidjR1N7e5yEL4Fg50k-70QJQRjs44_cbFsmt5T0/edit?gid=0#gid=0'">DEVICE</div>
+        <div class="card blue" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1VAVu5pc9nyHR1OMKFVtDaIBHCWpF8kWmiL3iblqyLiA/edit?gid=0#gid=0'">ACC</div>
+        <div class="card yellow" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1AHnDWKzcOFWjfENroPVmgU35uhX1dWeea1g7U6YtB2Q/edit?gid=0#gid=0'">DEMO</div>
+        <div class="card green" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1BD3fIVTKUTdtuculviYhRAGZUd_nP9pJFKMwdu3yzjU/edit?gid=0#gid=0'">STOCK ALL</div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popupOverlay">
+        <div class="popupBox">
+            <h2>Welcome!</h2>
+            <p>Apakah kamu sudah meminta akses?</p>
+            <button onclick="closePopup()">Akses Sekarang</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                document.getElementById("popupOverlay").classList.add("showPopup");
+            }, 500); // Popup muncul setelah 500ms
+        });
+
+        function closePopup() {
+            document.getElementById("popupOverlay").classList.remove("showPopup");
+        }
+    </script>
+</body>
+</html>
